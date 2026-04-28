@@ -9,6 +9,8 @@ const app = express();
 require('dotenv').config();
 const userRoutes = require('./routes/userRoutes');
 const investmentRoutes = require('./routes/investmentRoutes');
+const pensionPlanRoutes = require('./routes/pensionPlanRoutes');
+const forecastRoutes = require('./routes/forecastRoutes');
 
 const port = process.env.PORT || 5000;
 
@@ -51,6 +53,8 @@ const adminOnly = (req, res, next) => {
 
 app.use('/users', userRoutes);
 app.use('/investments', investmentRoutes);
+app.use('/pension-plans', pensionPlanRoutes);
+app.use('/forecasts', forecastRoutes);
 
 app.get('/users/list', verifyToken, adminOnly, async (req, res) => {
   try {
